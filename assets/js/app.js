@@ -71,10 +71,16 @@
   const arrow = (cls = 'w-4 h-4') => `<i data-lucide="arrow-up-right" class="arrow ${cls}"></i>`;
 
   /* ---------------------------------------------------------------- logo */
-  // Símbolo: curvas de nível (laranja) sobre um lote (quadrado) e a linha do terreno
-  const SYMBOL = `<svg viewBox="0 0 48 48" aria-hidden="true" class="logo-symbol"><rect width="48" height="48" fill="#2e2e2e"/>
-    <g fill="none" stroke="#f97316" stroke-width="3.2"><path d="M6 37a18 18 0 0 1 36 0"/><path d="M13 37a11 11 0 0 1 22 0"/></g>
-    <rect x="20.5" y="30" width="7" height="7" fill="#fff"/><path d="M4 40.5h40" stroke="#fff" stroke-width="2"/></svg>`;
+  // Símbolo: o olho do GOTT (observação do território) – pálpebras em arcos duplos
+  // espelhados, íris laranja e pupila quadrada (o "lote" do cadastro)
+  const SYMBOL = `<svg viewBox="0 0 64 40" aria-hidden="true" class="logo-symbol">
+    <g fill="none" stroke="#f97316" stroke-linecap="square">
+      <path d="M3 20 C17 1 47 1 61 20 C47 39 17 39 3 20Z" stroke-width="4"/>
+      <path d="M13 12.5 C22 6 42 6 51 12.5 M13 27.5 C22 34 42 34 51 27.5" stroke-width="2.4"/>
+    </g>
+    <circle cx="32" cy="20" r="8.5" fill="#f97316"/>
+    <rect x="28.5" y="16.5" width="7" height="7" class="logo-pupil"/>
+    <rect x="34.5" y="13" width="3" height="3" fill="#fff"/></svg>`;
 
   function logo(dark) {
     return `<span class="logo${dark ? ' logo-dark' : ''}">
