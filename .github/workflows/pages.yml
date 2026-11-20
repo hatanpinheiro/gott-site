@@ -23,7 +23,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Validar JSON do conteúdo
-        run: for f in content/*.json; do jq empty "$f" || { echo "JSON inválido: $f"; exit 1; }; done
+        run: |
+          for f in content/*.json; do
+            jq empty "$f" || { echo "JSON inválido em $f"; exit 1; }
+          done
       - name: Montar pasta pública
         run: |
           mkdir _site
