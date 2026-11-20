@@ -49,15 +49,11 @@ body { font-family: 'Inter', system-ui, sans-serif; background: #fff; color: var
 
 /* ---------- Logo ---------- */
 .logo { display: inline-flex; align-items: center; gap: .7rem; color: var(--text); }
-.logo-symbol { width: 60px; height: 38px; flex-shrink: 0; }
-.logo-pupil { fill: #2e2e2e; }
+.logo-symbol { width: auto; height: 40px; flex-shrink: 0; }
 .logo-word { font-size: 2.6rem; line-height: .8; letter-spacing: .01em; padding-top: .15rem; }
 .logo-dot { color: var(--orange); }
 .logo-tag { font-size: .56rem; line-height: 1.25; letter-spacing: .07em; padding-left: .7rem; border-left: 2px solid currentColor; }
 .logo-dark { color: #fff; }
-.logo-dark .logo-pupil { fill: var(--ink); }
-.logo-symbol circle, .logo-pupil { transition: transform .35s var(--ease); transform-origin: 32px 20px; }
-a:hover .logo-symbol circle, a:hover .logo-pupil { transform: scale(1.12); }
 @media (max-width: 400px) { .logo-tag { display: none; } }
 
 /* ---------- Cabeçalho ---------- */
