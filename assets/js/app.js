@@ -70,6 +70,20 @@
   const ext = (href) => (/^https?:/i.test(href) ? ' target="_blank" rel="noopener noreferrer"' : '');
   const arrow = (cls = 'w-4 h-4') => `<i data-lucide="arrow-up-right" class="arrow ${cls}"></i>`;
 
+  /* ---------------------------------------------------------------- logo */
+  // Símbolo: curvas de nível (laranja) sobre um lote (quadrado) e a linha do terreno
+  const SYMBOL = `<svg viewBox="0 0 48 48" aria-hidden="true" class="logo-symbol"><rect width="48" height="48" fill="#2e2e2e"/>
+    <g fill="none" stroke="#f97316" stroke-width="3.2"><path d="M6 37a18 18 0 0 1 36 0"/><path d="M13 37a11 11 0 0 1 22 0"/></g>
+    <rect x="20.5" y="30" width="7" height="7" fill="#fff"/><path d="M4 40.5h40" stroke="#fff" stroke-width="2"/></svg>`;
+
+  function logo(dark) {
+    return `<span class="logo${dark ? ' logo-dark' : ''}">
+      ${SYMBOL}
+      <span class="logo-word display">GOTT<span class="logo-dot">.</span></span>
+      <span class="logo-tag label">UFSC<br>Observação e<br>Transformação<br>do Território</span>
+    </span>`;
+  }
+
   /* ------------------------------------------------- cabeçalho e rodapé */
   const NAV = [
     ['institucional', 'Sobre'], ['linhas-pesquisa', 'Pesquisa'], ['membros', 'Membros'],
@@ -90,7 +104,7 @@
     el.innerHTML = `
       <nav class="wrap flex items-stretch justify-between h-[72px]" aria-label="Principal">
         <a href="index.html" class="flex items-center px-4 sm:px-6" aria-label="GOTT – página inicial">
-          <img src="assets/img/logo-texto-sem-linhaguia.svg" alt="GOTT UFSC" width="140" height="56" class="h-11 sm:h-12 w-auto">
+          ${logo()}
         </a>
         <div class="hidden lg:flex items-center gap-10 px-6">${NAV.map(link('nav-link')).join('')}</div>
         <div class="flex items-stretch">
@@ -134,6 +148,7 @@
       <div class="wrap px-4 sm:px-6 pt-16 pb-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b border-white/20">
           <div class="lg:col-span-5">
+            <div class="mb-10">${logo(true)}</div>
             <p class="label text-orange mb-4">Contato</p>
             <h2 class="display section-title">Vamos<br>conversar<span class="text-orange">.</span></h2>
             ${c.email ? `<a href="mailto:${esc(c.email)}" class="btn btn-orange mt-8 w-full sm:w-auto">${esc(c.email)} ${arrow()}</a>` : ''}

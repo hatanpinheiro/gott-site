@@ -47,6 +47,19 @@ body { font-family: 'Inter', system-ui, sans-serif; background: #fff; color: var
 .on-dark .grid-lines, .grid-lines.dark { background: rgba(255, 255, 255, .14); }
 .on-dark .grid-lines > *, .grid-lines.dark > * { background: var(--ink); }
 
+/* ---------- Logo ---------- */
+.logo { display: inline-flex; align-items: center; gap: .7rem; color: var(--text); }
+.logo-symbol { width: 44px; height: 44px; flex-shrink: 0; }
+.logo-word { font-size: 2.6rem; line-height: .8; letter-spacing: .01em; padding-top: .15rem; }
+.logo-dot { color: var(--orange); }
+.logo-tag { font-size: .56rem; line-height: 1.25; letter-spacing: .07em; padding-left: .7rem; border-left: 2px solid currentColor; }
+.logo-dark { color: #fff; }
+.logo-dark .logo-symbol rect:first-child { fill: #f97316; }
+.logo-dark .logo-symbol g { stroke: #2e2e2e; }
+a:hover .logo-symbol g { stroke: #fff; }
+.logo-dark:hover .logo-symbol g { stroke: #2e2e2e; }
+@media (max-width: 400px) { .logo-tag { display: none; } }
+
 /* ---------- Cabeçalho ---------- */
 .site-header { background: #fff; border-bottom: 2px solid var(--text); }
 .nav-link { font-family: 'Space Mono', monospace; font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text); position: relative; padding: .25rem 0; }
