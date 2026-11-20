@@ -1,0 +1,7 @@
+{
+  "itens": [
+    { "titulo": "CNPq", "descricao": "Conselho Nacional de Desenvolvimento Científico e Tecnológico.", "icone": "graduation-cap", "link": "https://www.gov.br/cnpq/pt-br" },
+    { "titulo": "Portal CAPES", "descricao": "Biblioteca virtual de periódicos para pesquisa e publicações acadêmicas.", "icone": "database", "link": "https://www.periodicos.capes.gov.br/" },
+    { "titulo": "Repositório Institucional", "descricao": "Acesse teses e dissertações da Universidade Federal de Santa Catarina.", "icone": "library", "link": "https://repositorio.ufsc.br/" }
+  ]
+}

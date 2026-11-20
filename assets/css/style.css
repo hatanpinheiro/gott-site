@@ -1,0 +1,142 @@
+/* ==========================================================================
+   GOTT – Grupo de Observação e Transformação do Território | UFSC
+   Linguagem visual brutalista: branco, laranja e grafite (#4d4d4d)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --ink: #4d4d4d;        /* faixas escuras */
+  --ink-deep: #3a3a3a;   /* faixa escura alternativa */
+  --text: #2e2e2e;       /* texto e títulos */
+  --soft: #8a8a8a;
+  --line: #d9d9d9;
+  --paper: #f5f4f0;
+  --orange: #f97316;     /* preenchimentos */
+  --orange-deep: #ea580c;/* texto laranja sobre branco (contraste) */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body { font-family: 'Inter', system-ui, sans-serif; background: #fff; color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+/* ---------- Tipografia ---------- */
+.display { font-family: 'Anton', Impact, sans-serif; font-weight: 400; text-transform: uppercase; line-height: .9; letter-spacing: -.005em; }
+.mono { font-family: 'Space Mono', ui-monospace, monospace; }
+.label { font-family: 'Space Mono', ui-monospace, monospace; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.num { font-family: 'Space Mono', monospace; font-weight: 700; color: var(--orange-deep); font-size: .95rem; }
+.on-dark .num { color: var(--orange); }
+.hero-title { font-size: clamp(2.7rem, 7.4vw, 7.6rem); }
+.section-title { font-size: clamp(2.6rem, 6.5vw, 5.75rem); }
+.statement { font-size: clamp(2.6rem, 6.8vw, 6.4rem); line-height: .92; }
+.text-outline { color: transparent; -webkit-text-stroke: 2px currentColor; }
+
+/* Rótulo vertical (lateral das seções) */
+.v-label { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; }
+
+/* ---------- Acessibilidade ---------- */
+.skip-link { position: absolute; left: 1rem; top: -100px; z-index: 200; background: var(--orange); color: var(--text); padding: .75rem 1rem; font-weight: 700; }
+.skip-link:focus { top: 1rem; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+
+/* ---------- Estrutura ---------- */
+.wrap { width: 100%; max-width: 1440px; margin-inline: auto; }
+.rule { border-color: var(--text); }
+.grid-lines { display: grid; gap: 1px; background: var(--line); }
+.grid-lines > * { background: #fff; }
+.on-dark .grid-lines, .grid-lines.dark { background: rgba(255, 255, 255, .14); }
+.on-dark .grid-lines > *, .grid-lines.dark > * { background: var(--ink); }
+
+/* ---------- Cabeçalho ---------- */
+.site-header { background: #fff; border-bottom: 2px solid var(--text); }
+.nav-link { font-family: 'Space Mono', monospace; font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text); position: relative; padding: .25rem 0; }
+.nav-link::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: var(--orange); transition: width .25s var(--ease); }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+.nav-cta { background: var(--orange); color: var(--text); font-family: 'Space Mono', monospace; font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; display: flex; align-items: center; gap: 2.5rem; padding: 0 1.5rem; transition: background .2s; }
+.nav-cta:hover { background: var(--text); color: #fff; }
+
+/* ---------- Botões e links ---------- */
+.btn { display: inline-flex; align-items: center; justify-content: space-between; gap: 2rem; font-family: 'Space Mono', monospace; font-weight: 700; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; padding: .95rem 1.25rem; transition: background .2s, color .2s, transform .2s var(--ease); }
+.btn-orange { background: var(--orange); color: var(--text); }
+.btn-orange:hover { background: #fff; color: var(--text); }
+.btn-ink { background: var(--text); color: #fff; }
+.btn-ink:hover { background: var(--orange); color: var(--text); }
+.btn-line { border: 2px solid var(--text); color: var(--text); }
+.btn-line:hover { background: var(--text); color: #fff; }
+.link-arrow { display: inline-flex; align-items: center; gap: .6rem; font-family: 'Space Mono', monospace; font-weight: 700; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; border-bottom: 2px solid currentColor; padding-bottom: .2rem; }
+.link-arrow:hover { color: var(--orange-deep); }
+.on-dark .link-arrow:hover { color: var(--orange); }
+.arrow { transition: transform .25s var(--ease); }
+a:hover > .arrow, a:hover .arrow, button:hover > .arrow { transform: translate(3px, -3px); }
+
+/* ---------- Banner ---------- */
+.hero-figure { position: relative; }
+.hero-figure .block { position: absolute; background: var(--orange); }
+.hero-figure img { position: relative; filter: grayscale(.15) contrast(1.05); }
+.badge { width: 128px; height: 128px; animation: rotate 22s linear infinite; }
+@keyframes rotate { to { transform: rotate(360deg); } }
+
+/* ---------- Abas e filtros ---------- */
+.chip { font-family: 'Space Mono', monospace; font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: .6rem .9rem; border: 2px solid var(--text); background: #fff; color: var(--text); white-space: nowrap; transition: background .15s, color .15s; }
+.chip:hover { background: var(--paper); }
+.chip[aria-selected="true"], .chip[aria-pressed="true"] { background: var(--text); color: #fff; }
+.chip .count { color: var(--orange-deep); margin-left: .35rem; }
+.chip[aria-selected="true"] .count, .chip[aria-pressed="true"] .count { color: var(--orange); }
+.field { font-family: 'Space Mono', monospace; font-size: .85rem; border: 2px solid var(--text); padding: .7rem .9rem .7rem 2.6rem; width: 100%; background: #fff; }
+.field:focus { outline: none; box-shadow: 4px 4px 0 var(--orange); }
+
+/* ---------- Membros ---------- */
+.member { transition: background .2s; }
+.member:hover { background: var(--paper); }
+.member img { filter: grayscale(1); transition: filter .3s; }
+.member:hover img { filter: grayscale(0); }
+.avatar-fallback { display: flex; align-items: center; justify-content: center; background: var(--ink); color: var(--orange); font-family: 'Anton', sans-serif; font-size: 1.4rem; }
+
+/* ---------- Notícias (tiles) ---------- */
+.tile { position: relative; display: flex; flex-direction: column; overflow: hidden; min-height: 300px; transition: background .2s; }
+.tile .tile-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.1); opacity: .2; transition: opacity .35s, transform .6s var(--ease); }
+.tile:hover .tile-img { opacity: .32; transform: scale(1.04); }
+.tile > :not(.tile-img) { position: relative; }
+.tile-white { background: #fff; color: var(--text); }
+.tile-orange { background: var(--orange); color: var(--text); }
+.tile-orange .num { color: var(--text); }
+.tile-orange .tile-img { mix-blend-mode: multiply; opacity: .3; }
+.tile-ink { background: var(--ink); color: #fff; }
+.tile-ink .num { color: var(--orange); }
+.tile-paper { background: var(--paper); color: var(--text); }
+
+/* ---------- Carregamento ---------- */
+.skeleton { background: linear-gradient(90deg, #efefef 25%, #e2e2e2 37%, #efefef 63%); background-size: 400% 100%; animation: shimmer 1.4s ease infinite; }
+@keyframes shimmer { 0% { background-position: 100% 50%; } 100% { background-position: 0 50%; } }
+.reveal { animation: fadeUp .6s var(--ease) both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } }
+
+/* ---------- Faixa de parceiros ---------- */
+.marquee { display: flex; width: max-content; animation: marquee 40s linear infinite; }
+.marquee:hover { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+.partner img { filter: grayscale(1); opacity: .75; transition: filter .25s, opacity .25s; }
+.partner:hover img { filter: none; opacity: 1; }
+
+/* ---------- Markdown ---------- */
+.prose { line-height: 1.8; color: #444; }
+.prose > * + * { margin-top: 1.1em; }
+.prose h2, .prose h3 { font-family: 'Anton', sans-serif; text-transform: uppercase; color: var(--text); font-weight: 400; margin-top: 1.6em; line-height: 1; }
+.prose h2 { font-size: 2rem; } .prose h3 { font-size: 1.5rem; }
+.prose strong { color: var(--text); }
+.prose a { color: var(--orange-deep); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 2px; }
+.prose ul { list-style: square; padding-left: 1.4em; } .prose ol { list-style: decimal; padding-left: 1.4em; }
+.prose ul li::marker { color: var(--orange); }
+.prose blockquote { border-left: 6px solid var(--orange); padding: .25rem 0 .25rem 1.25rem; font-style: italic; }
+.prose img { margin: 1.5rem 0; }
+.on-dark .prose, .prose.on-dark { color: #e6e6e6; } .on-dark .prose strong { color: #fff; }
+
+.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-4 { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .marquee { animation: none; flex-wrap: wrap; justify-content: center; width: 100%; }
+}

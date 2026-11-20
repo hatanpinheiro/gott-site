@@ -1,0 +1,29 @@
+{
+  "itens": [
+    {
+      "titulo": "Avaliação e Mercado Imobiliário",
+      "icone": "building-2",
+      "texto": "Aplicar e desenvolver técnicas de avaliação em massa e análises econômicas para estimar o valor de imóveis, representando o comportamento do mercado e disponibilizando informações em observatórios."
+    },
+    {
+      "titulo": "Cadastro Territorial Multifinalitário",
+      "icone": "map",
+      "texto": "Apoiar a modernização de sistemas cadastrais, consolidando o modelo tradicional (econômico, físico, jurídico) e projetando o modelo multifinalitário com cadastros temáticos integrados."
+    },
+    {
+      "titulo": "Observação do Território",
+      "icone": "satellite",
+      "texto": "Investigar e desenvolver soluções de geotecnologias inovadoras para captura, sistematização e representação de dados territoriais, em prol de ampla divulgação."
+    },
+    {
+      "titulo": "Políticas de Solo",
+      "icone": "landmark",
+      "texto": "Viabilizar a implementação de instrumentos do Estatuto da Cidade para construir cidades sustentáveis e equitativas, diminuindo a informalidade na ocupação do solo urbano."
+    },
+    {
+      "titulo": "Transformação do Território",
+      "icone": "network",
+      "texto": "Estruturar planos de ordenamento territorial com análises espaciais em SIG, focando nas áreas ambiental, social e econômica para impulsionar cidades inteligentes."
+    }
+  ]
+}

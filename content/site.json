@@ -1,0 +1,32 @@
+{
+  "nome": "GOTT",
+  "nome_completo": "Grupo de Observação e Transformação do Território",
+  "descricao": "Grupo de Pesquisa da UFSC focado em gestão territorial, geotecnologias, cadastro territorial multifinalitário e políticas de solo.",
+  "hero": {
+    "etiqueta": "Território, Cidade e Sustentabilidade",
+    "titulo": "Inteligência Territorial e",
+    "titulo_destaque": "Cadastro Multifinalitário",
+    "texto": "Desenvolvimento de soluções tecnológicas para a gestão e o planejamento urbano, integrando geotecnologias, cadastro técnico, políticas de solo e análises espaciais avançadas.",
+    "imagem": "assets/img/hero_bg.png"
+  },
+  "institucional": {
+    "texto": "**O Grupo de Observação e Transformação do Território – GOTT** tem como intuito investigar e debater temáticas referentes ao cadastro territorial multifinalitário, ao mercado imobiliário e às políticas de solo.\n\nOs resultados das pesquisas, além de serem divulgados no meio acadêmico, embasam ações de extensão que proporcionam a implementação de políticas de solo e a capacitação de pessoas que atuam com atividades relacionadas ao território.",
+    "citacao": "O grupo é formado majoritariamente por professores e estudantes do Programa de Pós-Graduação em Engenharia de Transportes e Gestão Territorial e dos departamentos de Geociências e Engenharia Civil da UFSC.",
+    "texto_final": "Participam também professores, pesquisadores e estudantes de outros programas e instituições nacionais e internacionais. O GOTT forma parte da **Rede Académica de Catastro Multifinalitario** e atua em conjunto com o Centro de Estudios Territoriales da Universidad Nacional de Córdoba (Argentina) no projeto intitulado \"Valores del Suelo en América Latina\"."
+  },
+  "contato": {
+    "email": "everton.silva@ufsc.br",
+    "instagram": "https://www.instagram.com/gott.ufsc",
+    "endereco": "Campus Universitário Reitor João David Ferreira Lima\nTrindade, Florianópolis - SC\nCEP: 88040-900",
+    "departamento": "Depto. de Geociências / Engenharia Civil",
+    "dgp_cnpq": "https://dgp.cnpq.br/dgp/espelhogrupo/9764602221221024"
+  },
+  "aviso": {
+    "ativo": true,
+    "titulo": "Vem aí o COBRAC 2026!",
+    "texto": "Em breve mais informações.",
+    "link": "",
+    "link_texto": "Saiba mais",
+    "expira_em": ""
+  }
+}

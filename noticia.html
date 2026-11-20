@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notícia – GOTT | UFSC</title>
+  <meta name="description" content="Notícia do Grupo de Observação e Transformação do Território (GOTT/UFSC).">
+  <meta name="theme-color" content="#4d4d4d">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="assets/js/tw-config.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="https://unpkg.com/lucide@1.61.0/dist/umd/lucide.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/marked@18.1.1/lib/marked.umd.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.4.17/dist/purify.min.js"></script>
+  <script defer src="assets/js/app.js"></script>
+  <script defer src="assets/js/noticia.js"></script>
+</head>
+<body data-page="noticia" class="font-body">
+  <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+  <header id="site-header" class="site-header sticky top-0 z-50 h-[74px]"></header>
+
+  <main id="conteudo">
+    <article id="artigo" aria-busy="true">
+      <div class="wrap px-4 sm:px-6 lg:px-10 py-16 space-y-6">
+        <div class="h-6 w-48 skeleton"></div><div class="h-28 w-full max-w-3xl skeleton"></div><div class="h-64 w-full skeleton"></div>
+      </div>
+    </article>
+    <section id="mais" class="hidden border-t-2 border-ink-text bg-paper">
+      <div class="wrap px-4 sm:px-6 lg:px-10 py-8 flex justify-between items-center">
+        <h2 class="display text-4xl">Mais notícias</h2>
+        <a href="noticias.html" class="link-arrow">Ver todas <i data-lucide="arrow-up-right" class="arrow w-4 h-4"></i></a>
+      </div>
+      <div id="mais-lista" class="grid-lines grid sm:grid-cols-3 border-t-2 border-ink-text"></div>
+    </section>
+  </main>
+
+  <footer id="contato" class="bg-ink min-h-[400px]"></footer>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{
+    "itens":  [
+                  {
+                      "titulo":  "Evento FIG Brasil",
+                      "slug":  "evento-fig-brasil",
+                      "subtitulo":  "FIG Joint Land Administration Conference!",
+                      "data":  "2025-10-04",
+                      "autor":  "Equipe GOTT",
+                      "categoria":  "Evento",
+                      "tags":  [
+                                   "Urbanismo",
+                                   "Sustentabilidade",
+                                   "GOTT"
+                               ],
+                      "imagem":  "https://figbrasil.paginas.ufsc.br/wp-content/themes/brasilGovInterno/img/brasao_site_ufsc.svg?ver=1758835321",
+                      "resumo":  "O evento da Federação Internacional de Geômetras (FIG) será realizado pela primeira vez no Brasil, na cidade de Florianópolis, com a coordenação técnica da UFSC e coordenação administrativa financeira da FEESC. Trata-se de um evento técnico-científico de caráter internacional que reúne, em um único espaço, atividades da FIG e da ONU-Habitat.",
+                      "corpo":  "Com programação prevista para os dias 3 a 5 de novembro de 2025, a conferência incluirá apresentações orais de trabalhos selecionados, palestras de especialistas e debates técnicos. Espera-se a participação de pesquisadores, profissionais, estudantes e gestores públicos de diversos países, criando um espaço de intercâmbio de experiências, avanços científicos e soluções tecnológicas para a administração de terras e o planejamento territorial.\n\nA proposta da Comissão Organizadora é a de promover um evento que proporcione um importante intercâmbio de experiências e conhecimentos, aproximando o conhecimento científico das demandas atuais e da formação de profissionais para atenderem as necessidades da sociedade.  Neste sentido, a programação contará com uma estrutura para realização do congresso que assegure os resultados esperados.",
+                      "link_externo":  "https://figbrasil.paginas.ufsc.br/pb/",
+                      "destaque":  false,
+                      "publicado":  true
+                  },
+                  {
+                      "titulo":  "I Seminário Municipal de Cadastro Territorial",
+                      "slug":  "i-seminario-municipal-de-cadastro-territorial",
+                      "subtitulo":  "Modernização da gestão cadastral",
+                      "data":  "2019-07-15",
+                      "autor":  "Hatan Pinheiro Silva",
+                      "categoria":  "Evento",
+                      "tags":  [
+                                   "Comunidade",
+                                   "Participação",
+                                   "Evento"
+                               ],
+                      "imagem":  "https://gott.cfh.ufsc.br/files/2019/07/WhatsApp-Image-2019-07-17-at-14.40.56-300x169.jpeg",
+                      "resumo":  "No dia 15 de julho, segunda feira, foi realizado o I Seminário Municipal de Cadastro Territorial, com o tema modernização da gestão cadastral. Organizado pela Prefeitura Municipal de Florianópolis através do Instituto de Pesquisa e Planejamento Urbano – IPUF, em parceria com o Grupo de Observação e Transformação do Território – GOTT. O evento contou com a participação de mais de 250 pessoas presentes, e cerca de 300 visualizações via transmissão web.",
+                      "corpo":  "Na abertura do evento ocorreu o lançamento do novo Mapa Físico e Político de Florianópolis, que apresenta uma leitura atualizada da cidade para o ano de 2019. E a programação seguiu com as seguintes palestra dos membros do GOTT: 1º O Cadastro Multifinalitário na prática: experiências latino-americanas, por Diego Alfonso Erba. 2º Modernização dos sistemas cadastrais, pelo Prof. Dr. Everton da Silva. 3º O cadastro e as ferramentas para política tributária municipal, por João Norberto Destro. Ao fim do evento foi realizado uma mesa redonda com a participação dos palestrantes, da professora Dra. Liane Ramos, do Coordenador de Geoinformação do Governo do Estado de Santa Catarina, Thobias Furlanetti e do Gerente de Cadastro, Geoprocessamento e Pesquisa do IPUF, Kaliu Teixeira.",
+                      "link_externo":  "",
+                      "destaque":  false,
+                      "publicado":  true
+                  },
+                  {
+                      "titulo":  "Bem Vind@s",
+                      "slug":  "bem-vind-s",
+                      "subtitulo":  "Bem vindos e vindas ao Grupo de Observação e Transformação do Territorio - GOTT",
+                      "data":  "2018-12-01",
+                      "autor":  "Hatan Pinheiro Silva",
+                      "categoria":  "Pesquisa",
+                      "tags":  [
+                                   "Grupo",
+                                   "Pesquisa",
+                                   "Extensão",
+                                   "Universidade"
+                               ],
+                      "imagem":  "assets/img/logo-texto-sem-linhaguia.svg",
+                      "resumo":  "",
+                      "corpo":  "",
+                      "link_externo":  "",
+                      "destaque":  false,
+                      "publicado":  true
+                  }
+              ]
+}

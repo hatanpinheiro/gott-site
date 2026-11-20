@@ -1,0 +1,20 @@
+{
+  "itens": [
+    {
+      "titulo": "FIG Joint Land Administration Conference",
+      "data_inicio": "2025-11-03",
+      "data_fim": "2025-11-05",
+      "local": "Florianópolis – SC",
+      "descricao": "Evento da Federação Internacional de Geômetras (FIG) com a ONU-Habitat, pela primeira vez no Brasil, com coordenação técnica da UFSC.",
+      "link": "https://figbrasil.paginas.ufsc.br/pb/"
+    },
+    {
+      "titulo": "I Seminário Municipal de Cadastro Territorial",
+      "data_inicio": "2019-07-15",
+      "data_fim": "",
+      "local": "Florianópolis – SC",
+      "descricao": "Modernização da gestão cadastral, organizado pelo IPUF em parceria com o GOTT.",
+      "link": ""
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "itens": [
+    { "nome": "LabFSG", "logo": "assets/img/logo_labfsg.png", "link": "" },
+    { "nome": "LabGeop – UFSC", "logo": "https://labgeop.ufsc.br/wp-content/themes/brasilGovInterno/img/brasao_default.png", "link": "https://labgeop.ufsc.br/" },
+    { "nome": "UDESC", "logo": "https://www.udesc.br/arquivos/udesc/id_cpmenu/16030/vertical_cor_17562274117873_16030.jpg", "link": "https://www.udesc.br/" },
+    { "nome": "Prefeitura Municipal de Florianópolis", "logo": "https://www.pmf.sc.gov.br/midia/marcas/logo_pmf.jpg", "link": "https://www.pmf.sc.gov.br/" }
+  ]
+}

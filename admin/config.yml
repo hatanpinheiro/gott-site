@@ -1,0 +1,237 @@
+# Configuração do painel (Sveltia CMS, compatível com Decap CMS)
+# Documentação: https://github.com/sveltia/sveltia-cms
+#
+backend:
+  name: github
+  repo: hatanpinheiro/gott-site
+  branch: main
+  commit_messages:
+    create: "Cria {{collection}} “{{slug}}”"
+    update: "Atualiza {{collection}} “{{slug}}”"
+    delete: "Remove {{collection}} “{{slug}}”"
+    uploadMedia: "Envia arquivo “{{path}}”"
+    deleteMedia: "Remove arquivo “{{path}}”"
+
+site_url: https://gott.ufsc.br
+display_url: https://gott.ufsc.br
+logo_url: ../assets/img/favicon.svg
+
+media_folder: assets/uploads
+public_folder: assets/uploads
+
+collections:
+  # ---------------------------------------------------------------- NOTÍCIAS
+  - name: noticias
+    label: Notícias
+    icon: newspaper
+    files:
+      - name: lista
+        label: Todas as notícias
+        file: content/noticias.json
+        fields:
+          - name: itens
+            label: Notícias
+            label_singular: Notícia
+            widget: list
+            collapsed: true
+            add_to_top: true
+            summary: "{{fields.data}} — {{fields.titulo}}"
+            fields:
+              - { name: titulo, label: Título, widget: string }
+              - { name: slug, label: "Endereço (slug)", widget: string, required: false,
+                  hint: "Parte final do link da notícia, ex.: seminario-cadastro-2026. Deixe em branco para gerar a partir do título. Não altere depois de publicada." }
+              - { name: subtitulo, label: Subtítulo, widget: string, required: false }
+              - { name: data, label: Data de publicação, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+              - { name: autor, label: Autor/Publicador, widget: string, required: false, default: "Equipe GOTT" }
+              - { name: categoria, label: Categoria, widget: select, default: Geral,
+                  options: [Geral, Evento, Pesquisa, Publicação, Extensão, Defesa, Edital, Imprensa] }
+              - { name: tags, label: Tags, widget: list, required: false, hint: "Separe por vírgulas" }
+              - { name: imagem, label: Imagem principal, widget: image, required: false }
+              - { name: resumo, label: Resumo / introdução, widget: text, required: false,
+                  hint: "Aparece na listagem e no topo da notícia." }
+              - { name: corpo, label: Texto completo, widget: markdown, required: false }
+              - { name: link_externo, label: Link externo (opcional), widget: string, required: false }
+              - { name: destaque, label: Destacar na página inicial, widget: boolean, default: false, required: false }
+              - { name: publicado, label: Publicado, widget: boolean, default: true, required: false,
+                  hint: "Desmarque para salvar como rascunho (não aparece no site)." }
+
+  # ---------------------------------------------------------------- MEMBROS
+  - name: membros
+    label: Membros
+    icon: groups
+    files:
+      - name: lista
+        label: Todos os membros
+        file: content/membros.json
+        fields:
+          - name: itens
+            label: Membros
+            label_singular: Membro
+            widget: list
+            collapsed: true
+            summary: "{{fields.nome}} · {{fields.categoria}}"
+            fields:
+              - { name: nome, label: Nome completo, widget: string }
+              - { name: titulacao, label: Titulação, widget: select, required: false,
+                  options: [Dr., Dra., Me., Ma., Esp., Grad., Estudante] }
+              - { name: formacao, label: Formação (resumo), widget: string, required: false }
+              - { name: categoria, label: Categoria, widget: select, default: "Pesquisador(a)",
+                  options: ["Coordenação", "Pesquisador(a)", "Pós-graduação", "Graduação", "Egresso(a)"],
+                  hint: "Egressos aparecem numa aba separada." }
+              - { name: ano_entrada, label: Ano de entrada, widget: number, value_type: int, required: false }
+              - { name: pais, label: País de origem, widget: string, default: Brasil, required: false }
+              - { name: foto, label: Foto, widget: image, required: false,
+                  hint: "Envie uma imagem quadrada ou cole a URL da foto do Lattes." }
+              - { name: lattes, label: Link do Lattes, widget: string, required: false }
+              - { name: orcid, label: Link do ORCID, widget: string, required: false }
+
+  # ---------------------------------------------------------------- ACERVO
+  - name: acervo
+    label: Acervo acadêmico
+    icon: library_books
+    files:
+      - name: projetos
+        label: Projetos de pesquisa
+        file: content/projetos.json
+        fields:
+          - name: itens
+            label: Projetos
+            label_singular: Projeto
+            widget: list
+            collapsed: true
+            summary: "{{fields.titulo}} ({{fields.situacao}})"
+            fields:
+              - { name: titulo, label: Título, widget: string }
+              - { name: situacao, label: Situação, widget: select, default: Em andamento, options: [Em andamento, Concluído] }
+              - { name: ano_inicio, label: Ano de início, widget: number, value_type: int, required: false }
+              - { name: ano_fim, label: Ano de término, widget: number, value_type: int, required: false }
+              - { name: coordenacao, label: Coordenação, widget: string, required: false }
+              - { name: parceiros, label: Parceiros / financiadores, widget: string, required: false }
+              - { name: descricao, label: Descrição, widget: markdown, required: false }
+              - { name: link, label: Link, widget: string, required: false }
+      - name: publicacoes
+        label: Publicações
+        file: content/publicacoes.json
+        fields:
+          - name: itens
+            label: Publicações
+            label_singular: Publicação
+            widget: list
+            collapsed: true
+            add_to_top: true
+            summary: "{{fields.ano}} — {{fields.titulo}}"
+            fields:
+              - { name: titulo, label: Título, widget: string }
+              - { name: autores, label: Autores, widget: string, hint: "Ex.: SILVA, E.; ERBA, D." }
+              - { name: ano, label: Ano, widget: number, value_type: int }
+              - { name: tipo, label: Tipo, widget: select, default: Artigo,
+                  options: [Artigo, Livro, Capítulo, Dissertação, Tese, Anais, Relatório, Outro] }
+              - { name: veiculo, label: "Periódico / evento / editora", widget: string, required: false }
+              - { name: link, label: "Link ou DOI", widget: string, required: false }
+      - name: eventos
+        label: Agenda e eventos
+        file: content/eventos.json
+        fields:
+          - name: itens
+            label: Eventos
+            label_singular: Evento
+            widget: list
+            collapsed: true
+            add_to_top: true
+            summary: "{{fields.data_inicio}} — {{fields.titulo}}"
+            fields:
+              - { name: titulo, label: Título, widget: string }
+              - { name: data_inicio, label: Data de início, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+              - { name: data_fim, label: Data de término, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, required: false }
+              - { name: local, label: Local, widget: string, required: false }
+              - { name: descricao, label: Descrição, widget: text, required: false }
+              - { name: link, label: Link, widget: string, required: false }
+
+  # ---------------------------------------------------------------- SITE
+  - name: site
+    label: Página inicial e contato
+    icon: home
+    files:
+      - name: geral
+        label: Textos, contato e aviso
+        file: content/site.json
+        fields:
+          - { name: nome, label: Sigla, widget: string }
+          - { name: nome_completo, label: Nome completo, widget: string }
+          - { name: descricao, label: Descrição curta (SEO), widget: text }
+          - name: hero
+            label: Banner principal
+            widget: object
+            fields:
+              - { name: etiqueta, label: Etiqueta, widget: string }
+              - { name: titulo, label: Título, widget: string }
+              - { name: titulo_destaque, label: Título (parte em laranja), widget: string }
+              - { name: texto, label: Texto, widget: text }
+              - { name: imagem, label: Imagem de fundo, widget: image, required: false }
+          - name: institucional
+            label: Institucional
+            widget: object
+            fields:
+              - { name: texto, label: Texto principal, widget: markdown }
+              - { name: citacao, label: Citação em destaque, widget: text, required: false }
+              - { name: texto_final, label: Texto complementar, widget: markdown, required: false }
+          - name: contato
+            label: Contato
+            widget: object
+            fields:
+              - { name: email, label: E-mail, widget: string }
+              - { name: instagram, label: Instagram (URL), widget: string, required: false }
+              - { name: endereco, label: Endereço, widget: text }
+              - { name: departamento, label: Departamento, widget: string, required: false }
+              - { name: dgp_cnpq, label: Espelho do grupo no DGP/CNPq, widget: string, required: false }
+          - name: aviso
+            label: Aviso (pop-up da página inicial)
+            widget: object
+            fields:
+              - { name: ativo, label: Exibir aviso, widget: boolean, default: false }
+              - { name: titulo, label: Título, widget: string, required: false }
+              - { name: texto, label: Texto, widget: text, required: false }
+              - { name: link, label: Link (opcional), widget: string, required: false }
+              - { name: link_texto, label: Texto do botão, widget: string, required: false, default: Saiba mais }
+              - { name: expira_em, label: Deixar de exibir após, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, required: false }
+      - name: linhas
+        label: Linhas de pesquisa
+        file: content/linhas.json
+        fields:
+          - name: itens
+            label: Linhas
+            label_singular: Linha de pesquisa
+            widget: list
+            summary: "{{fields.titulo}}"
+            fields:
+              - { name: titulo, label: Título, widget: string }
+              - { name: icone, label: Ícone, widget: string, default: map,
+                  hint: "Nome de um ícone de https://lucide.dev/icons (ex.: map, landmark, satellite, building-2)." }
+              - { name: texto, label: Descrição, widget: text }
+      - name: parceiros
+        label: Parceiros
+        file: content/parceiros.json
+        fields:
+          - name: itens
+            label: Parceiros
+            label_singular: Parceiro
+            widget: list
+            summary: "{{fields.nome}}"
+            fields:
+              - { name: nome, label: Nome, widget: string }
+              - { name: logo, label: Logotipo, widget: image }
+              - { name: link, label: Site, widget: string, required: false }
+      - name: links
+        label: Links úteis
+        file: content/links.json
+        fields:
+          - name: itens
+            label: Links
+            label_singular: Link
+            widget: list
+            summary: "{{fields.titulo}}"
+            fields:
+              - { name: titulo, label: Título, widget: string }
+              - { name: descricao, label: Descrição, widget: string, required: false }
+              - { name: icone, label: Ícone (lucide.dev), widget: string, default: link }
+              - { name: link, label: URL, widget: string }
