@@ -1,0 +1,92 @@
+name: Publicar em gott.ufsc.br (FTP/SFTP)
+
+# Envia o site ao servidor da UFSC a cada alteração na branch main
+# (inclusive as feitas pelo painel /admin).
+#
+# Configure em Settings → Secrets and variables → Actions → "New repository secret":
+#   FTP_HOST      endereço do servidor (ex.: ftp.ufsc.br)            – obrigatório
+#   FTP_USER      usuário                                            – obrigatório
+#   FTP_PASSWORD  senha                                              – obrigatório
+#   FTP_DIR       pasta do site no servidor (ex.: /public_html)      – obrigatório
+#   FTP_PROTOCOL  ftp, ftps ou sftp (padrão: sftp)                   – opcional
+#   FTP_PORT      porta (padrão: 22 para sftp, 21 para ftp/ftps)     – opcional
+# Enquanto FTP_HOST não existir, o workflow apenas avisa e termina sem erro.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-ufsc
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      HOST: ${{ secrets.FTP_HOST }}
+      USER: ${{ secrets.FTP_USER }}
+      PASS: ${{ secrets.FTP_PASSWORD }}
+      DIR: ${{ secrets.FTP_DIR }}
+      PROTO: ${{ secrets.FTP_PROTOCOL }}
+      PORT: ${{ secrets.FTP_PORT }}
+    steps:
+      - name: Verificar configuração
+        id: cfg
+        run: |
+          if [ -z "$HOST" ]; then
+            echo "::warning::Segredo FTP_HOST não configurado – envio para gott.ufsc.br ignorado."
+            echo "skip=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          for v in USER PASS DIR; do
+            if [ -z "${!v}" ]; then echo "::error::Falta o segredo FTP_$( [ $v = PASS ] && echo PASSWORD || echo $v )"; exit 1; fi
+          done
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        if: steps.cfg.outputs.skip != 'true'
+
+      - name: Validar JSON do conteúdo
+        if: steps.cfg.outputs.skip != 'true'
+        run: |
+          for f in content/*.json; do
+            jq empty "$f" || { echo "JSON inválido em $f"; exit 1; }
+          done
+
+      - name: Montar pasta pública
+        if: steps.cfg.outputs.skip != 'true'
+        run: |
+          mkdir _site
+          cp -r index.html noticias.html noticia.html admin assets content _site/
+
+      - name: Instalar lftp
+        if: steps.cfg.outputs.skip != 'true'
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+
+      - name: Backup do conteúdo atual do servidor
+        if: steps.cfg.outputs.skip != 'true'
+        run: |
+          PROTO="${PROTO:-sftp}"
+          [ -z "$PORT" ] && { [ "$PROTO" = sftp ] && PORT=22 || PORT=21; }
+          mkdir -p backup
+          lftp -u "$USER","$PASS" -p "$PORT" "$PROTO://$HOST" -e "
+            set sftp:auto-confirm yes; set ftp:ssl-allow yes; set net:max-retries 2; set net:timeout 30;
+            mirror --verbose=0 --parallel=4 --exclude-glob .git* '$DIR' backup; quit" || echo "::warning::Backup não concluído."
+
+      - uses: actions/upload-artifact@v4
+        if: steps.cfg.outputs.skip != 'true'
+        with:
+          name: backup-servidor-${{ github.run_number }}
+          path: backup
+          retention-days: 30
+          if-no-files-found: ignore
+
+      - name: Enviar site ao servidor
+        if: steps.cfg.outputs.skip != 'true'
+        run: |
+          PROTO="${PROTO:-sftp}"
+          [ -z "$PORT" ] && { [ "$PROTO" = sftp ] && PORT=22 || PORT=21; }
+          lftp -u "$USER","$PASS" -p "$PORT" "$PROTO://$HOST" -e "
+            set sftp:auto-confirm yes; set ftp:ssl-allow yes; set net:max-retries 3; set net:timeout 30;
+            mirror --reverse --only-newer --verbose --parallel=4 _site '$DIR'; quit"

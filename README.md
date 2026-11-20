@@ -68,10 +68,27 @@ O workflow `.github/workflows/pages.yml` publica o site a cada *push* na branch 
 Ative em **Settings → Pages → Source: GitHub Actions**. Para usar o domínio `gott.ufsc.br`,
 crie o arquivo `CNAME` com `gott.ufsc.br` e peça à SeTIC/UFSC o apontamento DNS (CNAME para `<usuario>.github.io`).
 
-### Opção B — servidor da UFSC
+### Opção B — servidor da UFSC (gott.ufsc.br) por FTP/SFTP — automático
 
-Copie os arquivos do repositório para a pasta pública do servidor (ou agende um `git pull`).
-Como não há build, basta servir os arquivos como estão.
+O workflow `.github/workflows/deploy-ufsc.yml` envia o site ao servidor da UFSC a cada
+alteração na `main` (inclusive as feitas pelo painel). Antes de cada envio, ele baixa uma
+**cópia de segurança** do que está no servidor (fica 30 dias em *Actions → execução → Artifacts*).
+
+Configure uma vez em **Settings → Secrets and variables → Actions → New repository secret**:
+
+| Segredo        | Exemplo                 | Obrigatório |
+|----------------|-------------------------|-------------|
+| `FTP_HOST`     | `ftp.servidor.ufsc.br`  | sim |
+| `FTP_USER`     | `gott`                  | sim |
+| `FTP_PASSWORD` | (senha)                 | sim |
+| `FTP_DIR`      | `/public_html`          | sim — a pasta onde hoje está o `index.html` |
+| `FTP_PROTOCOL` | `sftp`, `ftp` ou `ftps` | não (padrão `sftp`) |
+| `FTP_PORT`     | `22`                    | não (padrão 22 no sftp, 21 no ftp) |
+
+Depois, rode manualmente em **Actions → Publicar em gott.ufsc.br → Run workflow** para testar.
+Enquanto `FTP_HOST` não existir, o workflow só avisa e não falha.
+
+O envio não apaga arquivos antigos do servidor (só adiciona/atualiza).
 
 ## Testar localmente
 
